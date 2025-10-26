@@ -1,0 +1,34 @@
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+env/
+*.env
+
+# IDE/editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Python package management
+*.egg-info/
+dist/
+build/
+
+# Vector store or large binary data
+data/policy_pal_vector_store/
+*.bin
+*.sqlite3
+
+# Local or helper files used for reference or structure generation
+structure.txt
+generate_file_structure.py
