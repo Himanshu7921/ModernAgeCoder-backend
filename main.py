@@ -230,19 +230,18 @@ def get_prompt() -> ChatPromptTemplate:
         Your job is to answer student or visitor questions about classes, teachers, schedules, pricing, and ongoing batches.
         Always maintain a warm, helpful, and professional tone suitable for an educational environment."""),
 
-        ('user', """Here are the retrieved company information documents relevant to the user’s question:\n
-        {retrieved_docs_from_rag}\n
-        User Query: {user_query}\n
+        ('user', """Here are the retrieved company information documents relevant to the user’s question:
+        {retrieved_docs_from_rag}
+        User Query: {user_query}
         Instructions:
 
-        * Answer ONLY based on the details available in the documents above.
-        * If the answer is not found, politely inform the user that the information is currently unavailable and suggest contacting support. 
-          You can say: "Please feel free to contact our support team directly. They would be happy to assist you! +91 91233 66161"
-        * Keep the answer short, clear, and friendly.
-        * Reference teacher names, course timings, or pricing details when relevant.
-        * Do NOT generate unrelated or fabricated information.
-        Provide your answer below:""")
+        Answer ONLY based on the details available in the documents above.
+        If the answer is not found, politely inform the user that the information is currently unavailable and suggest contacting support. You can say: "Please feel free to contact our support team directly. They would be happy to assist you! +91 91233 66161"
+        Keep the answer short, clear, and friendly.
+        Reference teacher names, course timings, or pricing details when relevant.
+        Do NOT generate unrelated or fabricated information.
 
+        Provide your answer below:""")
     ])
 
 
