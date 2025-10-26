@@ -3,6 +3,8 @@
 # -----------------------------
 from RetrievalMind.embeddings_manager import EmbeddingManager
 from RetrievalMind.data_ingestion import PDFDocumentIngestor
+from RetrievalMind.vector_store_manager import VectorStore
+from RetrievalMind.rag_retriver import Retrieval
 import chromadb
 import uuid
 import logging
@@ -300,30 +302,24 @@ def main(query: str):
     # Step 2: Generate embeddings
     embeddings, embedding_manager = generate_document_embeddings(pdf_chunks)
 
-    # Step 3: Store documents in vector store (Chroma collection)
-    collection = store_documents_in_vector_store(pdf_chunks, embeddings, vector_collection_name, vector_store_directory)
-
-    # Step 4: Retrieve relevant documents
-    # --- DEBUG: run a direct ChromaDB query with the generated query embedding ---
+    # Step 3: Store documents in vector store using RetrievalMind's VectorStore
     try:
-        q_embs = embedding_manager.generate_embeddings([query])
-        # Handle numpy array or list returns safely
-        q_emb = q_embs[0] if hasattr(q_embs, '__len__') and not isinstance(q_embs, float) else q_embs
-        logger.debug(f"Direct query embedding shape/len: {getattr(q_emb, 'shape', None) or len(q_emb)}")
-        raw_query_result = collection.query(query_embeddings=[q_emb.tolist()], n_results=5)
-        logger.debug("Raw Chroma query result keys: %s", list(raw_query_result.keys()))
-        # Print summaries of returned sections
-        for k, v in raw_query_result.items():
-            try:
-                logger.debug("%s: type=%s len=%s", k, type(v), (len(v) if hasattr(v, '__len__') else 'N/A'))
-            except Exception:
-                logger.debug("%s: (unprintable)", k)
-        logger.debug("Raw query result (sample): %s", {k: (v[:1] if isinstance(v, list) else str(v)) for k, v in raw_query_result.items()})
+        vector_store = VectorStore(collection_name=vector_collection_name, persist_directory=vector_store_directory, document_type="PDF")
+        # add_document accepts a list of documents and their embeddings
+        vector_store.add_document(documents=pdf_chunks, embeddings=embeddings)
+        logger.debug(f"Added {len(pdf_chunks)} documents to RetrievalMind VectorStore '{vector_collection_name}'")
     except Exception as e:
-        logger.error(f"Failed to run direct chroma query for debug: {e}")
+        logger.error(f"Failed to store documents in RetrievalMind VectorStore: {e}")
+        raise
 
-    # Pass raw_documents so our fallback can operate if retriever returns nothing
-    retrieved_docs = query_vector_store(collection, embedding_manager, query_text=query, top_k=5, min_score=0.0, raw_documents=pdf_chunks)
+    # Step 4: Retrieve relevant documents using RetrievalMind's Retrieval
+    try:
+        retrieval_pipeline = Retrieval(vector_store=vector_store, embedding_manager=embedding_manager)
+        retrieved_docs = retrieval_pipeline.retrieve(query=query, top_k=5, score_threshold=0)
+        logger.info(f"RetrievalMind returned {len(retrieved_docs)} results")
+    except Exception as e:
+        logger.error(f"RetrievalMind retrieval failed: {e}")
+        retrieved_docs = []
 
     # Preview retrieved docs (debug only)
     for doc in retrieved_docs:
