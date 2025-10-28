@@ -1,0 +1,78 @@
+Company Details: ModernAgeCoders
+
+1. Basic Information
+
+Company Name: ModernAgeCoders
+Tagline: “We don't just teach coding – we forge future tech leaders!”
+Mission: Our mission is to turn curious minds into coding experts who can solve real-world problems.
+Founded Year: 2020
+Headquarters: Kolkata, India
+Business Type: Online Education (Zoom-based Classes)
+
+2. Company Overview
+
+ModernAgeCoders is an online education platform that offers personalized Zoom-based classes, helping students learn from expert teachers in small, interactive batches.
+Our sessions are designed to be flexible, engaging, and focused on real-world skill development.
+
+3. Mission, Vision and About
+
+Welcome to The Modern Age Coders – Code Never Lies!
+
+Our coding academy is dedicated to empowering the next generation of young programmers and tech innovators through the art of coding. We provide engaging and interactive online coding classes that spark curiosity, build problem-solving skills, and prepare students for a future where technology is at the forefront.
+
+Our goal is to teach coding skills for kids and teens while nurturing logical thinking and creativity.
+
+At The Modern Age Coders, we help students build a strong foundation in coding by focusing on popular programming languages such as Python, HTML, CSS, and JavaScript, while encouraging creativity with hands-on coding projects. Whether you're a beginner starting your coding journey or looking to enhance your programming skills, we offer personalized learning paths tailored to each student's level.
+
+4. Courses and Subjects Offered
+
+Mathematics (Class 1st–12th)
+Coding: Python, Java, Full Stack Development, Artificial Intelligence, Machine Learning, Deep Learning
+
+5. Class Schedule and Structure
+
+Mode: Live Zoom Sessions
+Frequency: 2 Classes per Week
+Duration: 1 Hour per Class
+Batch Size: 5–10 Students
+Timing: Fixed, chosen by the student during registration
+Flexibility: Students can request a reschedule 24 hours before class
+
+6. Batches Currently Running
+
+Grade 9–12
+Python and AI (Basic to Advanced) – ₹1,999.92 – [https://www.modernagecoders.com/courses/python-ai-online-course-66e4896ab0278c49d5c2b43c](https://www.modernagecoders.com/courses/python-ai-online-course-66e4896ab0278c49d5c2b43c)
+Information Practices (Python + SQL) – ₹1,999.92 – [https://www.modernagecoders.com/courses/Information-Practices-Python-and-SQL-66e494dd2a1fd430c3e1a9e9](https://www.modernagecoders.com/courses/Information-Practices-Python-and-SQL-66e494dd2a1fd430c3e1a9e9)
+Java Begins – ₹1,999.92 – [https://www.modernagecoders.com/courses/Java-Begins-66e4942f4d8dd45f6c168a2e](https://www.modernagecoders.com/courses/Java-Begins-66e4942f4d8dd45f6c168a2e)
+Competitive Coding – ₹1,999.92 – [https://www.modernagecoders.com/courses/competitive-coding-course-674e14ed85359d6a60a05c60](https://www.modernagecoders.com/courses/competitive-coding-course-674e14ed85359d6a60a05c60)
+MERN Stack Mastery – ₹4,999.83 – [https://www.modernagecoders.com/courses/mern-stack-67dc7e5628b84104fd4e90b1](https://www.modernagecoders.com/courses/mern-stack-67dc7e5628b84104fd4e90b1)
+Data Science – ₹4,999.83 – [https://www.modernagecoders.com/courses/data-science-67dc7cc4a9b3b11c12ab3458](https://www.modernagecoders.com/courses/data-science-67dc7cc4a9b3b11c12ab3458)
+
+Grade 3–5: Kids Coding
+Blockly – ₹1,999.92
+AI Tools – ₹1,999.92 – [https://www.modernagecoders.com/courses/ai-tools-course-674f4dc195422167737616bf](https://www.modernagecoders.com/courses/ai-tools-course-674f4dc195422167737616bf)
+Microsoft Office Essentials – ₹1,999.92 – [https://www.modernagecoders.com/courses/microsoft-office-essentials-course-674f4d6ed3f0be2ebb34a225](https://www.modernagecoders.com/courses/microsoft-office-essentials-course-674f4d6ed3f0be2ebb34a225)
+Thunkable Coding – ₹1,999.92 – [https://www.modernagecoders.com/courses/thunkable-app-development-course-674f4c8d8af8dc01ccc7c503](https://www.modernagecoders.com/courses/thunkable-app-development-course-674f4c8d8af8dc01ccc7c503)
+Scratch Coding – ₹1,999.92 – [https://www.modernagecoders.com/courses/scratch-coding-course-674f4bcfd3f0be2ebb34a1ae](https://www.modernagecoders.com/courses/scratch-coding-course-674f4bcfd3f0be2ebb34a1ae)
+Canva Design – ₹1,999.92 – [https://www.modernagecoders.com/courses/canva-design-course-674e1e6c4d4f977ad2fd97b5](https://www.modernagecoders.com/courses/canva-design-course-674e1e6c4d4f977ad2fd97b5)
+
+7. Teachers and Instructors
+
+Our team of instructors combines technical excellence with teaching experience, having conducted 100+ live lectures collectively.
+
+Himanshu Singh – AI Engineer and ML Engineer – Artificial Intelligence, Machine Learning, Deep Learning, Python
+Mihir Sir – Full Stack Developer and Quant Analyst – MERN Stack, Web Apps, Quantitative Analysis
+Shivam Sir – Full Stack Developer – Frontend and Backend Development, JavaScript, React
+
+8. Contact and Support
+
+Phone or WhatsApp: +91 91233 66161
+Support Hours: 24/7 anytime
+Instagram: [https://www.instagram.com/modern_age_coders](https://www.instagram.com/modern_age_coders)
+
+9. Additional Info
+
+Class Recordings: Provided for all live sessions
+Study Material: Shared after every session (PDFs, Assignments, Projects)
+Certification: Offered upon course completion
+Refund Policy: Available within the first week (optional)

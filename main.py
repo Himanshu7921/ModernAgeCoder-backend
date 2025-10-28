@@ -3,6 +3,7 @@
 # -----------------------------
 from RetrievalMind.embeddings_manager import EmbeddingManager
 from RetrievalMind.data_ingestion import PDFDocumentIngestor
+from RetrievalMind.data_ingestion.text_ingestor import TextDocumentIngestor
 from RetrievalMind.vector_store_manager import VectorStore
 from RetrievalMind.rag_retriver import Retrieval
 import chromadb
@@ -23,6 +24,7 @@ from langchain_core.runnables import Runnable
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_core.runnables import RunnableLambda
 import os
+
 # Allow enabling verbose debug prints by setting environment variable RAG_DEBUG=1
 if os.getenv("RAG_DEBUG", "0") == "1":
     logger.setLevel(logging.DEBUG)
@@ -30,7 +32,7 @@ if os.getenv("RAG_DEBUG", "0") == "1":
 # -----------------------------
 # Document Loading and Embedding
 # -----------------------------
-def load_pdf_document(pdf_folder_path: str) -> list:
+def load_text_document(pdf_folder_path: str) -> list:
     """
     Load all PDF documents from a folder and return them as chunks.
 
@@ -41,9 +43,10 @@ def load_pdf_document(pdf_folder_path: str) -> list:
     Returns:
         list: List of document chunks with page content and metadata.
     """
-    pdf_ingestor = PDFDocumentIngestor(file_path = pdf_folder_path, loader_type='mu')
-    pdf_loader = pdf_ingestor.load_document()
-    document_chunks = pdf_loader.load()
+    # pdf_ingestor = PDFDocumentIngestor(file_path = pdf_folder_path, loader_type='mu')
+    text_ingestor = TextDocumentIngestor(file_path = pdf_folder_path)
+    text_loader = text_ingestor.load_document()
+    document_chunks = text_loader.load()
     logger.debug(f"Loaded {len(document_chunks)} document chunks from {pdf_folder_path}")
 
     # Debug: preview first 5 document chunks
@@ -271,18 +274,18 @@ def main(query: str):
     Full RAG pipeline: load documents, generate embeddings, store/retrieve, and prepare for LLM query.
     """
     # Configuration
-    pdf_folder = "backend/data/pdf/Company_Details.pdf"
-    vector_collection_name = "policy_pal_vector_collection"
-    vector_store_directory = "backend/data/policy_pal_vector_store"
+    text_folder_path = "backend/data/text_folder/Company_Details.txt"
+    vector_collection_name = "modern_age_coders_vector_collection"
+    vector_store_directory = "backend/data/modern_age_coders_vector_store"
 
     # Step 1: Load PDF documents (example: "Travel Policy", "Expense Policy", "HR Guidelines")
-    pdf_chunks = load_pdf_document(pdf_folder)
+    text_chunks = load_text_document(text_folder_path)
 
     # Quick keyword scan for teacher-related queries to ensure exact section hits
     lower_q = query.lower()
     if any(k in lower_q for k in ['teacher', 'teach', 'instructor', 'who are the teachers']):
         teacher_matches = []
-        for idx, chunk in enumerate(pdf_chunks):
+        for idx, chunk in enumerate(text_chunks):
             text = getattr(chunk, 'page_content', '')
             if not text:
                 continue
@@ -299,14 +302,14 @@ def main(query: str):
             return teacher_matches
 
     # Step 2: Generate embeddings
-    embeddings, embedding_manager = generate_document_embeddings(pdf_chunks)
+    embeddings, embedding_manager = generate_document_embeddings(text_chunks)
 
     # Step 3: Store documents in vector store using RetrievalMind's VectorStore
     try:
         vector_store = VectorStore(collection_name=vector_collection_name, persist_directory=vector_store_directory, document_type="PDF")
         # add_document accepts a list of documents and their embeddings
-        vector_store.add_document(documents=pdf_chunks, embeddings=embeddings)
-        logger.debug(f"Added {len(pdf_chunks)} documents to RetrievalMind VectorStore '{vector_collection_name}'")
+        vector_store.add_document(documents=text_chunks, embeddings=embeddings)
+        logger.debug(f"Added {len(text_chunks)} documents to RetrievalMind VectorStore '{vector_collection_name}'")
     except Exception as e:
         logger.error(f"Failed to store documents in RetrievalMind VectorStore: {e}")
         raise
